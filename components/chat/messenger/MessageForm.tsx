@@ -73,29 +73,27 @@ export default function MessageForm() {
       const mock = messages.find((msg) => msg.sender === MessageSendBy.ME);
       const icons = generateRandomIcons();
       
-      if (mock) {
-        const newMessage: Message = {
-          image: mock.image || "/sender.svg",
-          sender: MessageSendBy.ME,
-          name: mock.name || "Test name",
-          message: message,
-          time: getTimeFormatted(),
-          icons: icons
-        };
+      const newMessage: Message = {
+        image: mock?.image || "/sender.svg",
+        sender: MessageSendBy.ME,
+        name: mock?.name || "Test name",
+        message: message,
+        time: getTimeFormatted(),
+        icons: icons
+      };
 
-        setMessages(newMessage);
-        setMessage("");
-  
-        const timeout = setTimeout(() => {
-          const messagesList = document.querySelector("#messages-list");
-  
-          if (messagesList) {
-            messagesList.scrollTop = messagesList.scrollHeight;
-          }
-        }, 0);
-  
-        return () => clearTimeout(timeout);
-      }
+      setMessages(newMessage);
+      setMessage("");
+
+      const timeout = setTimeout(() => {
+        const messagesList = document.querySelector("#messages-list");
+
+        if (messagesList) {
+          messagesList.scrollTop = messagesList.scrollHeight;
+        }
+      }, 0);
+
+      return () => clearTimeout(timeout);
     }
   };
 
