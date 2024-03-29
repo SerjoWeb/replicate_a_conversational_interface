@@ -2,12 +2,17 @@
 
 import React from "react";
 import ConversationList from "./conversations/ConversationList";
+import ConversationListMobile from "./conversations/ConversationListMobile";
 import Filters from "./conversations/Filters";
+import useWindowSize from "@/hooks/useWindowSize";
 
 import { Skeleton, Stack } from "@mui/material";
 import { DataLead, leadsStore } from "@/mock/conversations";
+import { cn } from "@/utils/cn";
 
 export default function Conversations() {
+  const size = useWindowSize();
+
   const { leads } = leadsStore();
 
   const [listHeigh, setListHeight] = React.useState<number>(0);
@@ -31,8 +36,16 @@ export default function Conversations() {
       </div>
 
       {listHeigh !== 0 ? (
-        <div className="flex-1 relative overflow-hidden" id="list" style={{ height: `${listHeigh}px` }}>
-          <ConversationList conversations={conversations} listHeigh={listHeigh} />
+        <div
+          className={cn(`flex-1 relative overflow-hidden h-[${listHeigh}px]`)}
+          id="list"
+          style={{ height: `${listHeigh}px` }}
+        >
+          {size && size.width && size.width > 1346 ? (
+            <ConversationList conversations={conversations} listHeigh={listHeigh} />
+          ) : (
+            <ConversationListMobile conversations={conversations} listHeigh={listHeigh} />
+          )}
         </div>
       ) : (
         <div className="flex-1 flex justify-center items-center">

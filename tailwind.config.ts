@@ -16,6 +16,7 @@ const config: Config = {
         "gray-divider": "#E0E0E0",
         "gray-text": "#757575",
         "gray-message": "#EEEEEE",
+        "gray-row-hover": "rgba(25, 118, 210, 0.08)",
         "orange-text": "#FF9800",
         "orange-dark": "#E65100",
         blue: "#1565C0",

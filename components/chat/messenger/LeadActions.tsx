@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import useWindowSize from "@/hooks/useWindowSize";
 
 import { Menu, MenuItem, Typography } from "@mui/material";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -10,6 +11,7 @@ import { IoCloseOutline } from "react-icons/io5";
 export default function LeadActions() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+  const size = useWindowSize();
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,9 +33,11 @@ export default function LeadActions() {
       >
         <BsThreeDotsVertical size={16} className="fill-gray" />
       </button>
-      <button type="button">
-        <IoCloseOutline size={22} className="stroke-gray" />
-      </button>
+      {size && size.width && size.width > 855 && (
+        <button type="button">
+          <IoCloseOutline size={22} className="stroke-gray" />
+        </button>
+      )}
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}

@@ -57,16 +57,16 @@ export default function Filters({ setConversations }: FiltersProps) {
 
   return (
     <div className="w-full flex flex-col gap-y-[20px]">
-      <div className="w-full flex justify-between items-center gap-x-[10px]">
+      <div className="w-full flex flex-wrap justify-between items-center gap-[10px]">
         <TextField
           variant="outlined"
           label="Search"
           size="small"
-          sx={{ flex: "1 1 0%" }}
+          sx={{ flex: "1 1 0%", minWidth: 120 }}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <FormControl sx={{ flex: "1 1 0%" }} size="small">
+        <FormControl sx={{ flex: "1 1 0%", minWidth: 120 }} size="small">
           <InputLabel>Campaign</InputLabel>
           <Select
             value={campaign}
@@ -79,7 +79,7 @@ export default function Filters({ setConversations }: FiltersProps) {
             <MenuItem value="Company 3">Company 3</MenuItem>
           </Select>
         </FormControl>
-        <FormControl sx={{ flex: "1 1 0%" }} size="small">
+        <FormControl sx={{ flex: "1 1 0%", minWidth: 120 }} size="small">
           <InputLabel>Team</InputLabel>
           <Select
             value={team}
@@ -92,7 +92,7 @@ export default function Filters({ setConversations }: FiltersProps) {
             <MenuItem value="Team 3">Team 3</MenuItem>
           </Select>
         </FormControl>
-        <FormControl sx={{ flex: "1 1 0%" }} size="small">
+        <FormControl sx={{ flex: "1 1 0%", minWidth: 120 }} size="small">
           <InputLabel>Lead Status</InputLabel>
           <Select
             value={leadStatus}
@@ -118,7 +118,7 @@ export default function Filters({ setConversations }: FiltersProps) {
         </div>
       </div>
 
-      <div className="w-full flex items-center gap-x-5">
+      <div className="w-full flex flex-wrap items-center gap-x-5">
         <FormControlLabel control={<Checkbox checked={unread} onChange={() => setUnread(!unread)} />} label="Unread" />
         <FormControlLabel control={<Checkbox checked={ureplied} onChange={() => setUreplied(!ureplied)} />} label="Ureplied" />
         <FormControlLabel control={<Checkbox checked={drafting} onChange={() => setDrafting(!drafting)} />} label="Drafting" />

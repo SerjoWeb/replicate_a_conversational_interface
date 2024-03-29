@@ -12,7 +12,6 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
-  TextField,
   Typography
 } from "@mui/material";
 
@@ -41,10 +40,6 @@ export default function MessageForm() {
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const onMessageHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setMessage(event.target.value);
   };
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -188,7 +183,7 @@ export default function MessageForm() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-y-[10px] border border-gray-divider rounded-md p-[15px]">
+      <div className="flex flex-col border border-gray-divider rounded-md p-[7px]">
         <div className="w-full flex justify-end">
           <MdInfoOutline
             size={18}
@@ -197,19 +192,12 @@ export default function MessageForm() {
         </div>
 
         <div className="w-full">
-          <TextField
+          <textarea
             value={message}
-            multiline={true}
             rows={3}
-            fullWidth={true}
             placeholder="Enter your message"
-            onChange={onMessageHandler}
-            sx={{
-              "& fieldset": {
-                border: "none",
-                padding: 0
-              }
-            }}
+            onChange={(event) => setMessage(event.target.value)}
+            className="w-full focus:outline-none"
           />
         </div>
 
@@ -235,7 +223,7 @@ export default function MessageForm() {
               <FiPlus size={18} className="stroke-gray-text" />
             </button>
             <Menu
-              id="basic-menu"
+              id="options-menu"
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
@@ -280,7 +268,8 @@ export default function MessageForm() {
         className={cn(`
           w-full flex justify-center items-center gap-x-[10px] 
           bg-puprple-dark text-sm text-white py-2 
-          disabled:opacity-75 disabled:cursor-not-allowed
+          disabled:opacity-75 disabled:cursor-not-allowed 
+          rounded-md
         `)}
         onClick={onSendMessageHandler}
         disabled={message === ""}

@@ -40,7 +40,7 @@ export default function ChatMessage({
         <div>
           <div
             className={cn(
-              "p-[10px] rounded-md min-w-[320px]",
+              "p-[10px] rounded-md min-w-[280px]",
               sender === MessageSendBy.ME ? "bg-puprple-message" : "bg-gray-message"
             )}
           >
@@ -55,7 +55,7 @@ export default function ChatMessage({
 
               <p
                 className={cn(
-                  "font-semibold text-lg",
+                  "font-semibold",
                   sender === MessageSendBy.ME ? "text-white" : "text-black"
                 )}
               >
@@ -71,7 +71,7 @@ export default function ChatMessage({
               )}
             </div>
 
-            <p className={cn(sender === MessageSendBy.ME ? "text-white" : "text-black")}>
+            <p className={cn("text-sm", sender === MessageSendBy.ME ? "text-white" : "text-black")}>
               {message}
             </p>
           </div>

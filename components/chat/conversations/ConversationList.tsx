@@ -5,7 +5,7 @@ import Image from "next/image";
 import LeadStatus from "./LeadStatus";
 
 import { Box, Typography } from "@mui/material";
-import { DataGrid, GridColDef, GridRenderCellParams, GridRowSelectionModel } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { DataLead, leadsStore } from "@/mock/conversations";
 import { cn } from "@/utils/cn";
@@ -118,7 +118,10 @@ export default function ConversationList({ listHeigh, conversations }: Conversat
   ];
 
   return (
-    <div className="w-full relative overflow-y-auto py-2" style={{ height: `${listHeigh}px` }}>
+    <div
+      className={cn(`w-full relative overflow-y-auto py-2 h-[${listHeigh}px]`)}
+      style={{ height: `${listHeigh}px` }}
+    >
       <DataGrid
         sx={{ height: listHeigh, width: "100%", border: "none" }}
         autoHeight={true}

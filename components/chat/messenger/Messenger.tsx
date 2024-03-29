@@ -1,19 +1,30 @@
 "use client";
 
 import ChatMessage from "./ChatMessage";
+import useWindowSize from "@/hooks/useWindowSize";
 
 import { messagesStore } from "@/mock/messages";
+import { cn } from "@/utils/cn";
 
 interface MessengerProps {
   listHeigh: number;
 }
 
 export default function Messenger({ listHeigh }: MessengerProps) {
+  const size = useWindowSize();
+
   const { messages } = messagesStore();
 
   return (
-    <div className="w-full relative overflow-y-auto py-2" style={{ height: `${listHeigh}px` }} id="messages-list">
-      <div className="w-full flex flex-col gap-y-[10px]">
+    <div
+      className={cn(
+        "w-full relative overflow-y-auto",
+        size && size.width && size.width > 855 ? "h-[${listHeigh}px]" : "h-full"
+      )}
+      style={{ height: size && size.width && size.width > 855 ? `${listHeigh}px` : "100%" }}
+      id="messages-list"
+    >
+      <div className="w-full flex flex-col gap-y-[10px] pr-[10px]">
         {messages.map((message, index) => (
           <ChatMessage
             key={index}
