@@ -75,9 +75,9 @@ export default function MessageForm() {
       
       if (mock) {
         const newMessage: Message = {
-          image: mock.image,
+          image: mock.image || "/sender.svg",
           sender: MessageSendBy.ME,
-          name: mock.name,
+          name: mock.name || "Test name",
           message: message,
           time: getTimeFormatted(),
           icons: icons
